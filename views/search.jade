@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1 Search result for #{query}
+        small Showing #{result.hits.hits.length} of #{result.hits.total} total
     table.table.table-hover
         thead
             tr
