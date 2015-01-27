@@ -5,6 +5,8 @@ $(document).ready(function () {
 		event.preventDefault();
 	});
 
+	$('#search-query').focus();
+
 	if ($('#search-query').val() === '') {
 		if (sessionStorage.getItem('query') !== '') {
 			$('#search-query').val(sessionStorage.getItem('query'));

@@ -11,7 +11,12 @@ html
         div.container
             h1
                 a(href='/') Hakatashi's Nada-Print Database Host
-            p 博多市が6年間で収集した灘校の授業の配布プリントの、OCR後のテキストを検索することができます。OCR前のプリントの画像が欲しい場合は、IDを控えて博多市に直接申し付けてください。
+            p
+                | 博多市が6年間で収集した灘校の授業の配布プリントの、OCR後のテキストを検索することができます。
+                | OCR前のプリントの画像が欲しい場合は、IDを控えて博多市に直接申し付けてください。
+                | なお内容はチェックしてないので灘校のプリント以外のデータが混じってる可能性は多分にあります。
+                small
+                    del 明らかにアレがアレな内容が見つかっても気にしないでください。<strong>絶対に気にしないでください。</strong>
             form#search
                 div.form-group
                     label(for='input-query') Query
@@ -24,3 +29,10 @@ html
             script
                 include index.js
             block content
+                script.
+                    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                    e.src='//www.google-analytics.com/analytics.js';
+                    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+                    ga('create','UA-43802516-1','auto');ga('send','pageview');
