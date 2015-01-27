@@ -17,7 +17,7 @@ block content
                     td= source.id
                     td
                         div.result-summary= source.summary
-                    td= hit._score
+                    td= hit._score.toFixed(3)
                     td
                         a.btn.btn-info(href='docs/' + source.id) View
     script
