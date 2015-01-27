@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 Hakatashi's Nada-Print Database Host
+    p 博多市が6年間で収集した灘校の授業の配布プリントの、OCR後のテキストを検索することができます。OCR前のプリントの画像が欲しい場合は、IDを控えて博多市に直接申し付けてください。
+    form#search
+        div.form-group
+            label(for='input-query') Query
+            input.form-control#search-query(type='text', placeholder='地震 OR 断層')
+            p.help-block
+                | Syntax Reference:
+                = ' '
+                a(target='_blank', href='http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax') elasticsearch
+        button.btn.btn-submit#search-submit(type='submit') Search
+    script
+        include index.js
