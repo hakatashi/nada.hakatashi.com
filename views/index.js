@@ -4,4 +4,12 @@ $(document).ready(function () {
 		location.href = 'search?q=' + query;
 		event.preventDefault();
 	});
+
+	if ($('#search-query').val() === '') {
+		if (sessionStorage.getItem('query') !== '') {
+			$('#search-query').val(sessionStorage.getItem('query'));
+		}
+	} else {
+		sessionStorage.setItem('query', $('#search-query').val());
+	}
 });

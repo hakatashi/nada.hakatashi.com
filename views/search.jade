@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1 Search result for #{query}
+    table.table.table-hover
+        thead
+            tr
+                th ID
+                th Summary
+                th Score
+                th
+        tbody
+            for hit in result.hits.hits
+                - var source = hit._source
+                tr
+                    td= source.id
+                    td
+                        div.result-summary= source.summary
+                    td= hit._score
+                    td
+                        a.btn.btn-info(href='docs/' + source.id) View
+    script
+        include search.js

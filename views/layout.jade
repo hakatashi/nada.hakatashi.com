@@ -1,10 +1,26 @@
 doctype html
 html
-  head
-    title= title
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
-    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
-    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css', rel='stylesheet')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title= title + ' - Nada-Print Database'
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+        script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+        script(src='//cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/1.6.10/jquery.dotdotdot.min.js')
+        link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css', rel='stylesheet')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        div.container
+            h1
+                a(href='/') Hakatashi's Nada-Print Database Host
+            p 博多市が6年間で収集した灘校の授業の配布プリントの、OCR後のテキストを検索することができます。OCR前のプリントの画像が欲しい場合は、IDを控えて博多市に直接申し付けてください。
+            form#search
+                div.form-group
+                    label(for='input-query') Query
+                    input.form-control#search-query(type='text', placeholder='地震 OR 断層', value=query)
+                    p.help-block
+                        | Syntax Reference:
+                        = ' '
+                        a(target='_blank', href='http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax') elasticsearch
+                button.btn.btn-primary.btn-lg.btn-submit#search-submit(type='submit') Search
+            script
+                include index.js
+            block content

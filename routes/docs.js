@@ -1,9 +1,5 @@
 var express = require('express');
-var elasticsearch = require('elasticsearch');
-
-var elastic = new elasticsearch.Client({
-    host: 'localhost:9200'
-});
+var elastic = require('./db');
 
 var router = express.Router();
 
@@ -27,7 +23,12 @@ router.get('/:id', function (req, res, next) {
         if (error) return next(error);
         if (result.hits.hits.length === 0) return next();
 
-        res.send(result.hits.hits[0]._source.text);
+        var text = result.hits.hits[0]._source.text;
+
+        res.render('docs', {
+            title: req.params.id,
+            text: text
+        });
     });
 });
 
